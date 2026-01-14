@@ -1,0 +1,61 @@
+<!DOCTYPE HTML> 
+<!--austin tuesday 1215 map-->
+<html>
+	<head>
+		<style>
+			body {
+				background-color: #808080;
+			}
+			#tbl {
+				margin: auto;
+				margin-top: 5vw;
+				width: 90vw;
+			}
+			td {
+				border: 2px solid black;
+			}
+			#filled {
+				background-color:#873e23;
+			}
+			#empty {
+				background-color: #2596be;
+			}
+			#border {
+				text-align: center;
+				border: 0px;
+			}
+
+
+		</style>
+
+		<meta charset="utf-8">
+		<title>Schedule</title>
+	</head>
+	<body>
+		<table id="tbl">
+		</table>
+	</body>
+	<script>
+		console.log("hello world");
+		const data = [
+			["","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+			["Breakfast","","","715 Julia@Hick's","","715 Robert@Hick's","730 Weston@Hick's","730 Julia@Hick's"],
+			["Lunch","","1215 Austin@Map","","","","",""],
+			["Dinner","1800 Noah@Hick's","1730 Brendan + Sawyer@Map","","","","","1800 Julia@Hick's"]
+			];
+		const table = document.getElementById("tbl");
+		console.assert(table, "table is null");
+		data.forEach((item, i) => {
+			const r = document.createElement("tr");
+			item.forEach((entry, j) => {
+				const day = document.createElement("td");
+				day.textContent = data[i][j];
+				day.id =  i>0 && j>0 ? data[i][j] ? "filled" : "empty" : "border";
+				r.appendChild(day);
+			});
+			table.appendChild(r);
+		});
+		
+
+	</script>
+</html>
