@@ -2,7 +2,7 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<style>
 			body {
-				<!--background-color: #808080;--data[i][j] -->
+				background-color: #cccccc;
 			}
 			#tbl {
 				margin: auto;
@@ -12,15 +12,26 @@
 			td {
 				border: 2px solid black;
 			}
-			#filled {
+			.filled {
 				background-color: #bf1029;
 			}
-			#empty {
+			.empty {
 				background-color: #056517;
 			}
-			#border {
+			.border {
 				text-align: center;
 				border: 0px;
+				font-size: 1.5em; 
+			}
+			.table{
+				text-align: center;
+				border-radius: 50px;
+			}
+			#postscript{
+				text-align: center;
+				margin: 10vh;
+				font-size: 2em;
+				font-style: italic; 
 			}
 
 
@@ -31,6 +42,9 @@
 	</head>
 	<body>
 		<table id="tbl"></table>
+		<div id="postscript">
+			<i>See a slot that works for you? Message me to reserve it!<i>
+		</div>
 	
 	<script>
 		console.log("hello world");
@@ -62,8 +76,9 @@
 			const r = document.createElement("tr");
 			item.forEach((entry, j) => {
 				const day = document.createElement("td");
-				day.textContent = i>0 && j>0 ? !data[i][j] ? slots[i-1][j-1] : data[i][j] : data[i][j];
-				day.id =  i>0 && j>0 ? data[i][j] ? "filled" : "empty" : "border";
+				day.classList.add("table");
+				day.textContent = i>0 && j>0 ? !data[i][j] ? slots[i-1][j-1] : data[i][j] : data[i][j]; //this is too clever to be readable. 
+				day.classList.add(i>0 && j>0 ? data[i][j] ? "filled" : "empty" : "border");
 				r.appendChild(day);
 			});
 			table.appendChild(r);
