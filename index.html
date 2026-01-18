@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)file:///C:/Users/WILLIAMSOM24/home/projects/dad_website/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<style>
+			body {
+				<!--background-color: #808080;--data[i][j] -->
+			}
+			#tbl {
+				margin: auto;
+				margin-top: 5vw;
+				width: 90vw;
+			}
+			td {
+				border: 2px solid black;
+			}
+			#filled {
+				background-color: #bf1029;
+			}
+			#empty {
+				background-color: #056517;
+			}
+			#border {
+				text-align: center;
+				border: 0px;
+			}
+
+
+		</style>
+
+		
+		<title>Schedule</title>
+	</head>
+	<body>
+		<table id="tbl"></table>
+	
+	<script>
+		console.log("hello world");
+		const slots = [
+			["715-800","715-800","715-800","715-800","715-800","715-900","715-900"],
+			["1200-1300","1215-1315","1200-1300","1215-1315","1200-1300","1200-1300","1215-1315"],
+			["1700-1900","1700-1900","1700-1900","1700-1900","1700-1900","1700-1900","1700-1900"]
+			];
+		const data = [
+			["","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+			["Breakfast","","","715 Julia@Hick's","","715 Robert@Hick's","","730 Julia@Hick's"],
+			["Lunch","","1215 Austin@Map","","","Ad Hoc Matteo@Hick's","","ASAP Weston@Hick's"],
+			["Dinner","1800 Noah@Hick's","1730 Brendan + Sawyer@Map","","","","Ad Hoc Matteo@Hick's","1800 Julia@Hick's"]
+			];
+		const table = document.getElementById("tbl");
+		console.assert(table, "table is null");
+		data.forEach((entry, i) => {
+			entry.forEach((entry_j, j) => {
+				if (i>0 && j>0){
+					console.log("interior");
+					if(data[i][j]) {
+						data[i][j] = "UNAVAILABLE";
+					}
+				}
+			});
+		});
+		console.log(data);
+		data.forEach((item, i) => {
+			const r = document.createElement("tr");
+			item.forEach((entry, j) => {
+				const day = document.createElement("td");
+				day.textContent = i>0 && j>0 ? !data[i][j] ? slots[i-1][j-1] : data[i][j] : data[i][j];
+				day.id =  i>0 && j>0 ? data[i][j] ? "filled" : "empty" : "border";
+				r.appendChild(day);
+			});
+			table.appendChild(r);
+		});
+
+		
+		
+
+	</script>
+
+</body></html>
